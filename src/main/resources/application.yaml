@@ -1,7 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      dll-auto: update
   datasource:
     url: jdbc:mysql://${DB_URL}/${DB_NAME_DATABASE}?createDatabaseIfNotExist=true
     username: ${DB_USERNAME}
