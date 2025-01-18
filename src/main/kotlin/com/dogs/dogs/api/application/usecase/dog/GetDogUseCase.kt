@@ -1,6 +1,7 @@
 package com.dogs.dogs.api.application.usecase.dog
 
 import com.dogs.dogs.api.application.dto.dog.DogsDTO
+import com.dogs.dogs.api.domain.model.attribute.AttributeValue
 import com.dogs.dogs.api.domain.repository.dog.DogRepository
 import com.dogs.dogs.api.presentation.request.toDto
 import org.springframework.stereotype.Component
@@ -12,12 +13,7 @@ import org.springframework.stereotype.Component
 @Component
 class GetDogUseCase(private val dogRepository: DogRepository) {
     operator fun invoke(
-        breed: String?,
-        dilation: Int?,
-        energy: Int?,
-        levelProtection: Int?,
-        levelFun: Int?,
-        affectionateChildren: Int?,
-        affectionateFamily: Int?
-    ): List<DogsDTO>  = dogRepository.getAll().map { it.toDto() }
+        listFilterAttributes: List<AttributeValue>,
+        breed: String?
+    ): List<DogsDTO>  = dogRepository.getAll(listAttributes = listFilterAttributes, breed = breed).map { it.toDto() }
 }
