@@ -2,7 +2,6 @@ package com.dogs.dogs.api.presentation.controller.dog
 
 import com.dogs.dogs.api.application.dto.dog.DogsDTO
 import com.dogs.dogs.api.application.usecase.dog.GetDogUseCase
-import com.dogs.dogs.api.domain.model.attribute.AttributeValue
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -33,49 +32,49 @@ class DogsController(
     ): ResponseEntity<List<DogsDTO>> {
         val dog = getDogUseCase(
             listFilterAttributes = listOf(
-                AttributeValue(
-                    name = "affectionateFamily",
-                    value = affectionateFamily
+                Pair(
+                    "affectionateFamily",
+                    affectionateFamily
                 ),
-                AttributeValue(
-                    name = "affectionateChildren",
-                    value = affectionateChildren
+                Pair(
+                    "affectionateChildren",
+                    affectionateChildren
                 ),
-                AttributeValue(
-                    name = "affectionateDogs",
-                    value = affectionateDogs
+                Pair(
+                    "affectionateDogs",
+                    affectionateDogs
                 ),
-                AttributeValue(
-                    name = "levelFun",
-                    value = levelFun
+                Pair(
+                    "levelFun",
+                    levelFun
                 ),
-                AttributeValue(
-                    name = "levelPreparationCoat",
-                    value = levelPreparationCoat
+                Pair(
+                    "levelPreparationCoat",
+                    levelPreparationCoat
                 ),
-                AttributeValue(
-                    name = "dilation",
-                    value = dilation
+                Pair(
+                    "dilation",
+                    dilation
                 ),
-                AttributeValue(
-                    name = "opennessToStrangers",
-                    value = opennessToStrangers
+                Pair(
+                    "opennessToStrangers",
+                    opennessToStrangers
                 ),
-                AttributeValue(
-                    name = "levelTraining",
-                    value = levelTraining
+                Pair(
+                    "levelTraining",
+                    levelTraining
                 ),
-                AttributeValue(
-                    name = "levelProtection",
-                    value = levelProtection
+                Pair(
+                    "levelProtection",
+                    levelProtection
                 ),
-                AttributeValue(
-                    name = "energy",
-                    value = energy
+                Pair(
+                    "energy",
+                    energy
                 ),
-                AttributeValue(
-                    name = "dilation",
-                    value = dilation
+                Pair(
+                    "dilation",
+                    dilation
                 ),
             ),
             breed = breed

@@ -1,6 +1,5 @@
 package com.dogs.dogs.api.infrastructure.persistence.repository.impl.dog
 
-import com.dogs.dogs.api.domain.model.attribute.AttributeValue
 import com.dogs.dogs.api.domain.model.dog.Dog
 import com.dogs.dogs.api.domain.repository.dog.DogRepository
 import com.dogs.dogs.api.infrastructure.persistence.entity.attribute.AttributeEntity
@@ -20,7 +19,7 @@ class DogRepositoryImpl(
 
     //por ser um dados complexo estou usndo o Criteria API do JPA,
 
-    override fun getAll(listAttributes: List<AttributeValue>, breed: String?): List<Dog> {
+    override fun getAll(listAttributes: List<Pair<String?, Int?>>, breed: String?): List<Dog> {
         val criteriaBuilder = entityManager.criteriaBuilder
         val criteriaQuery = criteriaBuilder.createQuery(DogsEntity::class.java)
         val root = criteriaQuery.from(DogsEntity::class.java)
@@ -37,7 +36,8 @@ class DogRepositoryImpl(
 
         val attributesJoin = root.join<DogsEntity, AttributeEntity>("attribute")
 
-        listAttributes.forEach { attributeValue ->
+        listAttributes.forEach { attributes ->
+             val (name,value) = attributes
             //para comparar preciso ter certeza que o value sera Int
             //se nao ira da erro TypeVariable(y)
 
@@ -45,10 +45,10 @@ class DogRepositoryImpl(
             //criteriaBuilder.greaterThanOrEqualTo(attributesJoin.get(attributeValue.name), value)
             // na linhaa acima vai pegar a columna affectionateFamily e comparar o vaalor envaido par saber se maiorOuIgual
             //se for ele adicona no predicates
-            attributeValue.value?.let { value ->
+            value?.let {
                 predicates.add(
                     criteriaBuilder.and(
-                        criteriaBuilder.greaterThanOrEqualTo(attributesJoin.get(attributeValue.name), value)
+                        criteriaBuilder.greaterThanOrEqualTo(attributesJoin.get(name), value)
                     )
                 )
             }
