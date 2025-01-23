@@ -29,7 +29,7 @@ class DogsController(
         @RequestParam("tempodecorte") levelPreparationCoat: Int?,
         @RequestParam("abertoaestranhos") opennessToStrangers: Int?,
         @RequestParam("niveldetreinamento") levelTraining: Int?
-    ): ResponseEntity<List<DogsDTO>> {
+    ):List<DogsDTO> {
         val dog = getDogUseCase(
             listFilterAttributes = listOf(
                 Pair(
@@ -51,10 +51,6 @@ class DogsController(
                 Pair(
                     "levelPreparationCoat",
                     levelPreparationCoat
-                ),
-                Pair(
-                    "dilation",
-                    dilation
                 ),
                 Pair(
                     "opennessToStrangers",
@@ -79,7 +75,7 @@ class DogsController(
             ),
             breed = breed
         )
-        return ResponseEntity.ok(dog)
+        return dog
     }
 
 }

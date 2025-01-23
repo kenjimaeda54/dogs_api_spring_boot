@@ -7,6 +7,9 @@ plugins {
 	//jpa
 	kotlin("plugin.jpa") version "2.1.0"
 
+	//jaacoco
+	jacoco
+
 }
 
 group = "com.dogs"
@@ -41,6 +44,8 @@ dependencies {
 	implementation("org.flywaydb:flyway-mysql:11.1.1")
 	implementation("org.flywaydb:flyway-core:11.1.1")
 
+	//test
+	implementation("io.mockk:mockk:1.13.5")
 
 
 }
