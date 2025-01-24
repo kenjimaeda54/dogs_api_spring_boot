@@ -22,8 +22,6 @@ class JpaConfig {
         return JpaTransactionManager(entityManagerFactory)
     }
 
-
-
     @Bean
     fun entityManager(entityManagerFactory: EntityManagerFactory): EntityManager {
         return entityManagerFactory.createEntityManager()

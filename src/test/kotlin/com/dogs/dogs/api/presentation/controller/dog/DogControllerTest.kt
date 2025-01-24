@@ -2,7 +2,6 @@ package com.dogs.dogs.api.presentation.controller.dog
 
 import com.dogs.dogs.api.application.mapper.dog.DogMapper.toDomain
 import com.dogs.dogs.api.application.usecase.dog.GetDogUseCase
-import com.dogs.dogs.api.domain.repository.dog.DogRepository
 import com.dogs.dogs.api.presentation.request.toDto
 import com.dogs.dogs.api.presentation.util.MockModel
 import io.mockk.every
@@ -12,7 +11,6 @@ import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 
