@@ -1,9 +1,11 @@
 package com.dogs.dogs.api.presentation.controller.dog
 
-import com.dogs.dogs.api.application.dto.dog.DogsDTO
+import com.dogs.dogs.api.application.mapper.dog.DogMapper.toResponse
+import com.dogs.dogs.api.application.usecase.dog.GetByIdUseCase
 import com.dogs.dogs.api.application.usecase.dog.GetDogUseCase
-import org.springframework.http.ResponseEntity
+import com.dogs.dogs.api.presentation.response.dog.DogResponse
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -14,6 +16,7 @@ private const val REQUEST_MAPPING = "dogs"
 @RequestMapping(REQUEST_MAPPING)
 class DogsController(
     private val getDogUseCase: GetDogUseCase,
+    private val getByBreedsUseCase: GetByIdUseCase,
 ) {
 
     @GetMapping
@@ -29,7 +32,7 @@ class DogsController(
         @RequestParam("tempodecorte") levelPreparationCoat: Int?,
         @RequestParam("abertoaestranhos") opennessToStrangers: Int?,
         @RequestParam("niveldetreinamento") levelTraining: Int?
-    ):List<DogsDTO> {
+    ):List<DogResponse> {
         val dog = getDogUseCase(
             listFilterAttributes = listOf(
                 Pair(
@@ -74,8 +77,13 @@ class DogsController(
                 ),
             ),
             breed = breed
-        )
+        ).map { it.toResponse() }
         return dog
     }
+
+    @GetMapping("/{id}")
+    fun searchDog(
+       @PathVariable("id") id: Int,
+    ): DogResponse  = getByBreedsUseCase(id).toResponse()
 
 }

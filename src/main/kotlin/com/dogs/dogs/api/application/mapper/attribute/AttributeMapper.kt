@@ -2,6 +2,7 @@ package com.dogs.dogs.api.application.mapper.attribute
 
 import com.dogs.dogs.api.application.dto.attribute.AttributeDTO
 import com.dogs.dogs.api.domain.model.attribute.Attribute
+import com.dogs.dogs.api.presentation.response.attribute.AttributeResponse
 
 object AttributeMapper {
 
@@ -18,6 +19,20 @@ object AttributeMapper {
         dilation = this.dilation,
         levelAdaptability = this.levelAdaptability,
         levelFun = this.levelFun,
+    )
+
+    fun AttributeDTO.toResponse() = AttributeResponse(
+        affectionateFamily = this.affectionateFamily,
+        affectionateChildren = this.affectionateChildren,
+        affectionateDogs = this.affectionateDogs,
+        levelPreparationCoat = this.levelPreparationCoat,
+        levelTraining = this.levelTraining,
+        opennessToStrangers = this.opennessToStrangers,
+        levelProtection = this.levelProtection,
+        energy = this.energy,
+        dilation = this.dilation,
+        levelAdaptability = this.levelAdaptability,
+        levelFun = this.levelFun
     )
 
     fun AttributeDTO.toDomain() = Attribute(

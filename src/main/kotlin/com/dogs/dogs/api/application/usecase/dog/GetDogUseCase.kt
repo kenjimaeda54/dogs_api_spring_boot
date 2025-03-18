@@ -1,8 +1,10 @@
 package com.dogs.dogs.api.application.usecase.dog
 
 import com.dogs.dogs.api.application.dto.dog.DogsDTO
+import com.dogs.dogs.api.application.mapper.dog.DogMapper.toDto
+import com.dogs.dogs.api.application.mapper.dog.DogMapper.toResponse
 import com.dogs.dogs.api.domain.repository.dog.DogRepository
-import com.dogs.dogs.api.presentation.request.toDto
+import com.dogs.dogs.api.presentation.response.dog.DogResponse
 import org.springframework.stereotype.Component
 
 

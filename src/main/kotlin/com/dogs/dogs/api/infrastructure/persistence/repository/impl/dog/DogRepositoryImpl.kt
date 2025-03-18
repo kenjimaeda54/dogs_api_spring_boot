@@ -65,5 +65,10 @@ class DogRepositoryImpl(
             .map { it.toDomain() }
     }
 
+    override fun getById(breed: Int): Dog = jpaRepository.findById(breed).orElseThrow {
+        RuntimeException("Dog not found")
+    }.toDomain()
+
+
 
 }
